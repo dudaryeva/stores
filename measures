@@ -1,0 +1,22 @@
+count of buyers = 
+DISTINCTCOUNT('Продажі_Факт'[№ чеку])
+
+num of visitors = 
+CALCULATE(
+    SUM('Відвідувачі (факт)'[Зайшло клієнтів]))
+
+Profit = [Total revenue] - [Total expenses]
+
+Profitability = DIVIDE(
+    [Profit],[Total expenses],0)
+
+Sales pr m2 = DIVIDE(
+    [Total revenue], MAX('Cловник_Магазини'[Площа, кв.м.]))
+
+Total expenses = CALCULATE(
+    SUM('Закупівля (факт)'[Сума]) + SUM('Операційні_витрати'[Сума ФАКТ])
+)
+
+Total revenue = SUM('Продажі_Факт'[Сума товару])
+
+Маржа = [Сума товару]-sum('Продажі_Факт'[Собівартість закупки])
